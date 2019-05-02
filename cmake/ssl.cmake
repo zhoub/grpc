@@ -44,11 +44,7 @@ elseif("${gRPC_SSL_PROVIDER}" STREQUAL "package")
   # See https://cmake.org/cmake/help/v3.6/module/FindOpenSSL.html
   find_package(OpenSSL REQUIRED)
   
-  if(TARGET OpenSSL::SSL)
-    set(_gRPC_SSL_LIBRARIES OpenSSL::SSL OpenSSL::Crypto)
-  else()
-    set(_gRPC_SSL_LIBRARIES ${OPENSSL_LIBRARIES})
-  endif()
+  set(_gRPC_SSL_LIBRARIES ${OPENSSL_LIBRARIES})
   set(_gRPC_SSL_INCLUDE_DIR ${OPENSSL_INCLUDE_DIR})
   
   set(_gRPC_FIND_SSL "if(NOT OPENSSL_FOUND)\n  find_package(OpenSSL)\nendif()")
